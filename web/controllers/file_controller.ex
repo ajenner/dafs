@@ -4,8 +4,9 @@ defmodule Dafs.FileController do
   alias Dafs.DFile
 
   def index(conn, _params) do
-    users = Repo.all(DFile)
-    render(conn, "index.html")
+    current_user_id = Coherence.current_user(conn).id
+    user_files = Repo.all(from f in DFile, where: f.user_id == ^current_user_id)
+    render(conn, "index.html", files: user_files)
   end
 
   def new(conn, _params) do
@@ -17,10 +18,12 @@ defmodule Dafs.FileController do
     current_user_id = Coherence.current_user(conn).id
     %{"file" => f} = file_params
     %{size: size} = File.stat! f.path
-    file = %{"user_id" => current_user_id,
+    IO.puts(f.path)
+    file = %{"path" => f.path,
       "name" => f.filename,
       "size" => size,
-      "contents" => File.read!(f.path)
+      "contents" => File.read!(f.path),
+      "user_id" => current_user_id
     }
 
     changeset = DFile.changeset(%DFile{}, file)

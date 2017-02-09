@@ -6,7 +6,6 @@ defmodule Dafs.DFile do
     field :name, :string
     field :size, :integer
     field :contents, :binary
-    field :last_updated, Ecto.DateTime
     belongs_to :user, Dafs.User
 
     timestamps()
@@ -17,7 +16,7 @@ defmodule Dafs.DFile do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :size, :last_updated, :user_id])
-    |> validate_required([:name, :size, :last_updated, :user_id])
+    |> cast(params, [:path, :name, :size, :contents, :user_id])
+    |> validate_required([:path, :name, :size, :contents, :user_id])
   end
 end

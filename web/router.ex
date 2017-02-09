@@ -11,6 +11,10 @@ defmodule Dafs.Router do
     plug Coherence.Authentication.Session
   end
 
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
   pipeline :protected do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -29,10 +33,6 @@ defmodule Dafs.Router do
   scope "/" do
     pipe_through :protected
     coherence_routes :protected
-  end
-
-  pipeline :api do
-    plug :accepts, ["json"]
   end
 
   scope "/", Dafs do

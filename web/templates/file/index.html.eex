@@ -17,5 +17,16 @@
     </tr>
   </thead>
   <tbody>
+  <%= for dfile <- @files do %>
+      <tr>
+        <td><%= dfile.name %></td>
+        <td><%= dfile.size %></td>
+        <td class="text-right">
+          <%= link "Download", to: file_path(@conn, :show, dfile), class: "btn btn-info btn-xs" %>
+          <%= link "Edit", to: file_path(@conn, :edit, dfile), class: "btn btn-default btn-xs" %>
+          <%= link "Delete", to: file_path(@conn, :delete, dfile), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+  <% end %>
   </tbody>
 </table>

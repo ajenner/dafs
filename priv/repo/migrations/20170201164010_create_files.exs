@@ -7,10 +7,8 @@ defmodule Dafs.Repo.Migrations.CreateFiles do
       add :name, :string
       add :size, :integer
       add :contents, :bytea
-      add :last_updated, :Ecto.DateTime
+      add :user_id, :integer
       timestamps
     end
-
-    create unique_index(:files, [:path])
   end
 end
