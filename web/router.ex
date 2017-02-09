@@ -45,7 +45,7 @@ defmodule Dafs.Router do
     pipe_through :protected
 
     # add protected resources below
-    resources "/privates", Dafs.PrivateController
+    resources "/files", FileController
   end
 
 
