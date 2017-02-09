@@ -17,10 +17,5 @@
     </tr>
   </thead>
   <tbody>
-<%= for user <- @users do %>
-    <tr>
-      <td><%= user.name %></td>
-    </tr>
-<% end %>
   </tbody>
 </table>

@@ -2,8 +2,10 @@ defmodule Dafs.DFile do
   use Dafs.Web, :model
 
   schema "files" do
+    field :path, :string
     field :name, :string
     field :size, :integer
+    field :contents, :binary
     field :last_updated, Ecto.DateTime
     belongs_to :user, Dafs.User
 
