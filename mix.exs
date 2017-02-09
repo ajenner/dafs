@@ -18,7 +18,7 @@ defmodule Dafs.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Dafs, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
+     applications: [:phoenix, :phoenix_pubsub, :arc_ecto, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex, :coherence]]
   end
 
@@ -32,6 +32,8 @@ defmodule Dafs.Mixfile do
   defp deps do
     [{:phoenix, "~> 1.2.1"},
      {:phoenix_pubsub, "~> 1.0"},
+     {:arc, "~> 0.6.0"},
+     {:arc_ecto, "~> 0.5.0"},
      {:canary, "~> 1.1.0"},
      {:phoenix_ecto, "~> 3.0"},
      {:postgrex, ">= 0.0.0"},
