@@ -35,7 +35,6 @@
                   <ul class="dropdown-menu">
                     <li><%= Dafs.Coherence.ViewHelpers.profile_link(@conn, Coherence.current_user(@conn), "Manage Account") %></li>
                     <li><%= Dafs.Coherence.ViewHelpers.invitation_link(@conn) %></li>
-                    <li role="separator" class="divider"></li>
                     <li><%= Dafs.Coherence.ViewHelpers.signout_link(@conn, "Sign Out", "delete-href") %></li>
                   </ul>
                 </li>

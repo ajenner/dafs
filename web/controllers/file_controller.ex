@@ -55,14 +55,12 @@ defmodule Dafs.FileController do
   end
 
   def edit(conn, %{"id" => id}) do
-    current_user_id = Coherence.current_user(conn).id
     file = Repo.get!(DFile, id)
     changeset = DFile.changeset(file)
     render(conn, "edit.html", file: file, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "d_file" => file_params}) do
-    current_user_id = Coherence.current_user(conn).id
     file = Repo.get!(DFile, id)
     changeset = DFile.changeset(file, file_params)
 
@@ -77,7 +75,6 @@ defmodule Dafs.FileController do
   end
 
   def delete(conn, %{"id" => id}) do
-    current_user_id = Coherence.current_user(conn).id
     file = Repo.get!(DFile, id)
 
     # Here we use delete! (with a bang) because we expect
