@@ -75,11 +75,11 @@ defmodule Dafs.FileController do
   end
 
   def delete(conn, %{"id" => id}) do
-    file = Repo.get!(DFile, id)
+    file = Repo.get(DFile, id)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    Repo.delete!(file)
+    Repo.delete(file)
 
     conn
     |> put_flash(:info, "User deleted successfully.")
